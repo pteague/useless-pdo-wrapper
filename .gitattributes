@@ -1,0 +1,22 @@
+*.php -whitespace
+*.js -whitespace
+*.css -whitespace
+*.xml -whitespace
+*.htm -whitespace
+*.html -whitespace
+*.tpl -whitespace
+*.sh -whitespace
+
+*.jpg binary
+*.png binary
+*.gif binary
+
+*.php eol=lf
+*.js eol=lf
+*.css eol=lf
+*.xml eol=lf
+*.htm eol=lf
+*.html eol=lf
+*.tpl eol=lf
+*.sh eol=lf
+*.bat eol=crlf

@@ -1,0 +1,46 @@
+{
+	"name": "useless/pdo-wrapper",
+	"description": "PDO Wrapper with Config",
+	"type": "library",
+	"keywords": [
+		"PDO"
+	],
+	"homepage": "https://github.com/pteague/useless-pdo-wrapper",
+	"license": "",
+	"authors": [
+		{
+			"name": "Patrick Teague",
+			"role": "developer"
+		}
+	],
+	"support": {
+		"source": "https://github.com/pteague/useless-pdo-wrapper"
+	},
+	"require": {
+		"php": ">=5.3.10",
+		"psr/log": "~1.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "3.7.*",
+		"whatthejeff/nyancat-phpunit-resultprinter": "~1.2",
+		"monolog/monolog": "1.*"
+	},
+	"suggest": {
+		"monolog/monolog": "For logging"
+	},
+	"autoload": {
+		"psr-4": {
+			"Useless\\Pdo\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Useless\\Pdo\\": "test/src/"
+		}
+	}
+	,"include-path": [
+		"./"
+	]
+	,"minimum-stability": "dev"
+	,"prefer-stable": true
+}

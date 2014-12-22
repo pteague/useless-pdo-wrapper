@@ -1,0 +1,39 @@
+<phpunit
+	bootstrap="./test/bootstrap.php"
+	colors="true"
+	printerFile="vendor/whatthejeff/nyancat-phpunit-resultprinter/src/NyanCat/PHPUnit/ResultPrinter.php"
+	printerClass="NyanCat\PHPUnit\ResultPrinter"
+>
+	<testsuites>
+		<testsuite name="Main Test Suite">
+			<directory>./test/src</directory>
+		</testsuite>
+	</testsuites>
+	
+	<filter>
+		<blacklist>
+			<directory suffix=".php">~/.composer</directory>
+			<directory suffix=".php">~/.composer/vendor</directory>
+			<directory suffix=".php">./test</directory>
+			<directory suffix=".php">./vendor</directory>
+		</blacklist>
+		<whitelist>
+			<directory suffix=".php">./src</directory>
+			<exclude>
+					<directory suffix=".php">~/.composer</directory>
+					<directory suffix=".php">../vendor</directory>
+			</exclude>
+		</whitelist>
+	</filter>
+	
+	<logging>
+		<log type="coverage-html"
+			target="./report/phpunit"
+			charset="UTF-8"
+			yui="true"
+			highlight="true"
+			lowUpperBound="35"
+			highLowerBound="70"
+		/>
+	</logging>
+</phpunit>
