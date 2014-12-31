@@ -333,6 +333,7 @@ class Wrapper
 		foreach ( $attrs as $attribute => $value ) {
 			$this->setAttribute( $attribute, $value );
 		}
+		$this->setDsn( (string)$config );
 		$this->setUsername( $config->getUsername() );
 		$this->setPassword( $config->getPassword() );
 	}
