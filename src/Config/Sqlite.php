@@ -20,8 +20,8 @@
 namespace Useless\Pdo\Config;
 
 use PDO;
-use Useless\Pdo\Driver\Exception\InvalidHost;
-use Useless\Pdo\Driver\Exception\InvalidFilePermissions;
+use Useless\Pdo\Config\Exception\InvalidHost;
+use Useless\Pdo\Config\Exception\InvalidFilePermissions;
 
 /**
  * Short description for class
@@ -51,17 +51,21 @@ class Sqlite
 		$dsn = $this->getDriver();
 		$host = null;
 		if ( ( $socket = $this->getUnixSocket() ) ) {
-			if ( is_dir( $socket ) ) {
+			if ( static::SQLITE_MEMORY_TABLE == $socket ) {
+				$host = $socket;
+			}
+			elseif ( is_dir( $socket ) ) {
 				if ( is_writable( $socket ) ) {
 					$dbname = $this->getDatabaseName();
-					$host = $socket . '/' . $dbname;
+					$host = $socket . DIRECTORY_SEPARATOR . $dbname;
 				}
 				else {
 					throw new InvalidFilePermissions();
 				}
 			}
 			else {
-				if ( is_writable( $socket ) ) {
+				$dir = dirname( $socket );
+				if ( is_dir( $dir ) && is_writable( $dir ) ) {
 					$host = $socket;
 				}
 				else {

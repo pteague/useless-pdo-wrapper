@@ -20,7 +20,7 @@
 namespace Useless\Pdo\Config;
 
 use PDO;
-use Useless\Pdo\Driver\Exception\InvalidHost;
+use Useless\Pdo\Config\Exception\InvalidHost;
 
 /**
  * Short description for class
@@ -35,7 +35,7 @@ class Mysql
 	public function addParameter( $name, $value )
 	{
 		if ( static::CHARSET == $name ) {
-			$this->addOption( PDO::MYSQL_ATTR_INIT_COMMAND, $value );
+			$this->addOption( PDO::MYSQL_ATTR_INIT_COMMAND, sprintf( 'SET NAMES %s', $value ) );
 		}
 		return parent::addParameter( $name, $value );
 	}

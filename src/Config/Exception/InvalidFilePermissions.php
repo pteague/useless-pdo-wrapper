@@ -14,13 +14,13 @@
  *
  * @category useless/pdo-wrapper
  */
-namespace Useless\Pdo\Driver\Exception;
+namespace Useless\Pdo\Config\Exception;
 
 use Exception;
 
 /**
  *
- * @package    Useless\Pdo\Driver\Exception
+ * @package    Useless\Pdo\Config\Exception
  */
 class InvalidFilePermissions
 	extends Exception

@@ -75,12 +75,10 @@ abstract class AbstractConfig
 
 	public function addHostReadOnly( $value )
 	{
-		$ro = $this->getParameter( static::HOST_READ_ONLY );
-		if ( !is_array( $ro ) ) {
-			$ro = array( $ro );
+		if ( !isset( $this->config[ static::HOST_READ_ONLY ] ) ) {
+			$this->config[ static::HOST_READ_ONLY ] = array();
 		}
-		$ro[] = $value;
-		$this->addParameter( static::HOST, $ro );
+		$this->config[ static::HOST_READ_ONLY ][] = $value;
 		return $this;
 	}
 
@@ -223,12 +221,6 @@ abstract class AbstractConfig
 		return $this;
 	}
 
-	public function setDriver( $value )
-	{
-		$this->addParameter( static::DRIVER, $value );
-		return $this;
-	}
-
 	public function setConfig( array $config = array() )
 	{
 		foreach ( $config as $param => $value ) {
@@ -245,7 +237,12 @@ abstract class AbstractConfig
 
 	public function setHostReadOnly( $value )
 	{
-		$this->addParameter( static::HOST, array( $value ) );
+		if ( is_array( $value ) ) {
+			$this->addParameter( static::HOST_READ_ONLY, $value );
+		}
+		else {
+			$this->addParameter( static::HOST_READ_ONLY, array( $value ) );
+		}
 		return $this;
 	}
 
