@@ -51,6 +51,7 @@ class LoaderTest
 					AbstractConfig::FILEPATH => null,
 					AbstractConfig::PORT => '3306',
 					AbstractConfig::CHARSET => null,
+					AbstractConfig::DSN => 'mysql:host=192.168.16.8;port=3306;dbname=mydb',
 				),
 			),
 			array(
@@ -75,6 +76,7 @@ class LoaderTest
 					AbstractConfig::FILEPATH => null,
 					AbstractConfig::PORT => '3306',
 					AbstractConfig::CHARSET => null,
+					AbstractConfig::DSN => 'mysql:host=192.168.16.9;port=3306;dbname=iss',
 				),
 			),
 			array(
@@ -91,6 +93,7 @@ class LoaderTest
 					AbstractConfig::PASSWORD => null,
 					AbstractConfig::PORT => null,
 					AbstractConfig::CHARSET => null,
+					AbstractConfig::DSN => 'sqlite:/tmp/mydb.sql',
 				),
 			),
 			array(
@@ -108,6 +111,7 @@ class LoaderTest
 					AbstractConfig::PASSWORD => null,
 					AbstractConfig::PORT => null,
 					AbstractConfig::CHARSET => null,
+					AbstractConfig::DSN => 'sqlite:/tmp/' . DIRECTORY_SEPARATOR . 'otherdb.sql',
 				),
 			),
 		);
@@ -131,7 +135,19 @@ class LoaderTest
 		$this->assertEquals( $expected[ AbstractConfig::PASSWORD ], $c->getPassword(), 'password value mismatch');
 		$this->assertEquals( $expected[ AbstractConfig::FILEPATH ], $c->getUnixSocket(), 'unix_socket value mismatch');
 		$this->assertEquals( $expected[ AbstractConfig::CHARSET ], $c->getCharset(), 'charset value mismatch');
+		$this->assertEquals( $expected[ AbstractConfig::DSN ], $c->getDsn(), 'DSN value mismatch');
+	}
+
+	/**
+	 * @expectedException Useless\Pdo\Config\Exception\UnknownDriver
+	 */
+	public function testUnknownDriver()
+	{
+		$cl = new ConfigLoader();
+		$c = $cl->getConfig( array(
+			AbstractConfig::DRIVER => 'Non-Existent-Driver',
+		) );
 	}
 }
 
- 
+
