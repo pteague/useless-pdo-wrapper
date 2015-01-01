@@ -6,7 +6,7 @@
 		"PDO"
 	],
 	"homepage": "https://github.com/pteague/useless-pdo-wrapper",
-	"license": "",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Patrick Teague",
