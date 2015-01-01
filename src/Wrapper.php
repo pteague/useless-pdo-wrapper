@@ -257,9 +257,7 @@ class Wrapper
 	 */
 	public function prepare( $statement, array $driver_options = array() )
 	{
-		var_dump( $statement );
-		$pdo = $this->getPdo();
-		return $pdo->prepare( $statement, $driver_options );
+		return $this->getPdo()->prepare( $statement, $driver_options );
 	}
 
 	/**
