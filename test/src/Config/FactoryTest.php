@@ -17,7 +17,7 @@
 namespace Useless\Pdo\Config;
 
 use PHPUnit_Framework_TestCase;
-use Useless\Pdo\Config\Loader as ConfigLoader;
+use Useless\Pdo\Config\Factory as ConfigLoader;
 use Useless\Pdo\Config\AbstractConfig;
 
 /**
