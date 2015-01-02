@@ -22,7 +22,7 @@ use Useless\Pdo\Config\Exception\UnknownDriver;
  *
  * @package    Useless\Pdo\Config
  */
-class Loader
+class Factory
 {
 	const CONFIG_MYSQL = 'mysql';
 	const CONFIG_SQLITE = 'sqlite';

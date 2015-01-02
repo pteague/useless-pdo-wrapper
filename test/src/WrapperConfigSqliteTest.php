@@ -2,7 +2,7 @@
 namespace Useless\Pdo;
 
 use PDO;
-use Useless\Pdo\Config\Loader as ConfigLoader;
+use Useless\Pdo\Config\Factory as ConfigLoader;
 use Useless\Pdo\Config\AbstractConfig;
 
 class WrapperConfigSqliteTest

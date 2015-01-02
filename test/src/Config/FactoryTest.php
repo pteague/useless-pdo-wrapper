@@ -24,7 +24,7 @@ use Useless\Pdo\Config\AbstractConfig;
  *
  * @package    Useless\Pdo
  */
-class LoaderTest
+class FactoryTest
 	extends PHPUnit_Framework_TestCase
 {
 	public function connectionConfig()

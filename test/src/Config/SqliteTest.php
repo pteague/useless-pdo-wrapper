@@ -17,7 +17,7 @@
 namespace Useless\Pdo\Config;
 
 use Useless\Pdo\Config\AbstractConfig;
-use Useless\Pdo\Config\Loader as ConfigLoader;
+use Useless\Pdo\Config\Factory as ConfigLoader;
 
 /**
  *
