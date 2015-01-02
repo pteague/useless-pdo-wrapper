@@ -60,15 +60,20 @@ abstract class AbstractWrapperTest
 
 	public function testAttributeGetterAndSetter()
 	{
-		# not connected yet
-		$this->pdo->setAttribute( PDO::ATTR_CASE, PDO::CASE_LOWER );
+		$pdo = $this->newPdo();
+		$this->assertFalse( $pdo->isConnected() );
 
-		$actual = $this->pdo->getAttribute( PDO::ATTR_CASE );
+		# not connected yet
+		$pdo->setAttribute( PDO::ATTR_CASE, PDO::CASE_LOWER );
+		$this->assertFalse( $pdo->isConnected() );
+
+		$actual = $pdo->getAttribute( PDO::ATTR_CASE );
 		$this->assertSame( PDO::CASE_LOWER, $actual );
+		$this->assertTrue( $pdo->isConnected() );
 
 		# now connected
-		$this->pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-		$actual = $this->pdo->getAttribute( PDO::ATTR_ERRMODE );
+		$pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+		$actual = $pdo->getAttribute( PDO::ATTR_ERRMODE );
 		$this->assertSame( PDO::ERRMODE_EXCEPTION, $actual );
 	}
 

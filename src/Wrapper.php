@@ -88,6 +88,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.begintransaction.php
 	 * @return bool
 	 */
@@ -97,6 +98,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.commit.php
 	 * @return bool
 	 */
@@ -140,6 +142,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.errorcode.php
 	 * @return mixed
 	 */
@@ -149,6 +152,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.errorinfo.php
 	 * @return array
 	 */
@@ -158,6 +162,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.exec.php
 	 * @param string $statement
 	 * @return int
@@ -168,6 +173,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.getattribute.php
 	 * @param int $attribute
 	 * @return $this|mixed
@@ -231,6 +237,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.intransaction.php
 	 * @return bool
 	 */
@@ -240,6 +247,17 @@ class Wrapper
 	}
 
 	/**
+	 * Is this instance connected to a database?
+	 *
+	 * @return bool
+	 */
+	public function isConnected()
+	{
+		return isset( $this->pdo );
+	}
+
+	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.lastinsertid.php
 	 * @param string $name
 	 * @return string
@@ -250,6 +268,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.prepare.php
 	 * @param string $statement
 	 * @param array $driver_options
@@ -261,6 +280,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.query.php
 	 * @param string $statement
 	 * @param int $type
@@ -285,6 +305,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.quote.php
 	 * @param string $string
 	 * @param int $parameter_type
@@ -296,6 +317,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.rollback.php
 	 * @return bool
 	 */
@@ -305,6 +327,7 @@ class Wrapper
 	}
 
 	/**
+	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.setattribute.php
 	 * @param mixed $attribute
 	 * @param mixed $value
