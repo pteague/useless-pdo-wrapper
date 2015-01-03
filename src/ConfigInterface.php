@@ -22,14 +22,14 @@ namespace Useless\Pdo;
  */
 interface ConfigInterface
 {
-	public function __toString();
-	
+	public function getAttributes();
+
+	public function getDsn();
+
 	public function getOptions();
-	
+
 	public function getPassword();
 
-	public function getAttributes();
-	
 	public function getUsername();
 }
 
