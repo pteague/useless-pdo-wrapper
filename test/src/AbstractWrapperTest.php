@@ -77,40 +77,6 @@ abstract class AbstractWrapperTest
 		$this->assertSame( PDO::ERRMODE_EXCEPTION, $actual );
 	}
 
-	public function testDebugConvertSql()
-	{
-		$sql = 'SELECT * FROM table WHERE field0 = :shortAndLong AND field1 = :short OR field2 = :short';
-		$params = array(
-			'short' => 'foo',
-			'shortAndLong' => 'bar',
-		);
-		$actual = Wrapper::debugConvertSql( $sql, $params, false );
-		$expect = 'SELECT * FROM table WHERE field0 = \'bar\' AND field1 = \'foo\' OR field2 = \'foo\'';
-		$this->assertEquals( $expect, $actual );
-	}
-
-	public function testDebugConvertSqlQuestionMarks()
-	{
-		$sql = 'SELECT * FROM table WHERE field0 = ? AND field1 = ? OR field2 = ?';
-		$params = array(
-			'short' => 'foo',
-			'shortAndLong' => 'bar',
-			'baz' => 'baz',
-		);
-		$actual = Wrapper::debugConvertSql( $sql, $params, true );
-		$expect = 'SELECT * FROM table WHERE field0 = \'foo\' AND field1 = \'bar\' OR field2 = \'baz\'';
-		$this->assertEquals( $expect, $actual );
-	}
-
-	public function testDebugConvertSqlNoParams()
-	{
-		$sql = 'SELECT * FROM table';
-		$params = array();
-		$actual = Wrapper::debugConvertSql( $sql, $params, false );
-		$expect = 'SELECT * FROM table';
-		$this->assertEquals( $expect, $actual );
-	}
-
 	public function testErrorCode()
 	{
 		$actual = $this->pdo->errorCode();

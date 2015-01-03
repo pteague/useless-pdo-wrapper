@@ -108,40 +108,6 @@ class Wrapper
 	}
 
 	/**
-	 * @param string $sql
-	 * @param array $params
-	 * @param bool $questionMarks
-	 * @return string
-	 */
-	static public function debugConvertSql( $sql, array $params, $questionMarks = false )
-	{
-		$pattern = array();
-		$replace = array();
-		if ( $questionMarks ) {
-			$limit = 1;
-		}
-		else {
-			$limit = -1;
-		}
-		foreach ( $params as $key => $value ) {
-			if ( $questionMarks ) {
-				$pattern[] = '@\?@';
-			}
-			else {
-				$pattern[] = '@:' . preg_quote( $key, '@' ) . '\b@';
-			}
-			$replace[] = str_replace( '$', '\\$', var_export( $value, true ) );
-		}
-
-		if ( $params ) {
-			return preg_replace( $pattern, $replace, $sql, $limit );
-		}
-		else {
-			return $sql;
-		}
-	}
-
-	/**
 	 * {@inheritdoc}
 	 * @see http://php.net/manual/en/pdo.errorcode.php
 	 * @return mixed

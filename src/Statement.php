@@ -30,13 +30,5 @@ class Statement
 		$this->dbh = $dbh;
 	}
 
-	public function debugConvertSql( array $params, $questionMarks = false )
-	{
-		return Wrapper::debugConvertSql(
-			$this->queryString
-			,$params
-			,$questionMarks
-		);
-	}
 }
 
