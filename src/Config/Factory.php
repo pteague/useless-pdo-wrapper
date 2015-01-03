@@ -34,6 +34,7 @@ class Factory
 	protected $classMap = array(
 		self::CONFIG_MYSQL => 'Useless\\Pdo\\Config\\Mysql',
 		self::CONFIG_SQLITE => 'Useless\\Pdo\\Config\\Sqlite',
+		self::CONFIG_SQLITE_2 => 'Useless\\Pdo\\Config\\Sqlite2',
 	);
 
 	/**
@@ -50,8 +51,11 @@ class Factory
 					$class = $this->classMap[ static::CONFIG_MYSQL ];
 					$rv = new $class( $config );
 					break;
-				case static::CONFIG_SQLITE:
 				case static::CONFIG_SQLITE_2:
+					$class = $this->classMap[ static::CONFIG_SQLITE_2 ];
+					$rv = new $class( $config );
+					break;
+				case static::CONFIG_SQLITE:
 				case static::CONFIG_SQLITE_3:
 					$class = $this->classMap[ static::CONFIG_SQLITE ];
 					$rv = new $class( $config );

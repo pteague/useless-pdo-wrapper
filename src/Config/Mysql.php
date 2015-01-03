@@ -1,10 +1,7 @@
 <?php
 /**
- * Short description for file
  *
- * Long description for file (if any)...
- *
- * @copyright  (c) Patrick Teague <plteague@gmail.com>
+ * @copyright  (c) Patrick Teague
  * @link       https://github.com/pteague/useless-pdo-wrapper/
  * @date       2014-11-13
  * @license    For the full copyright and license information, please view the LICENSE file that was distributed with this source code.
@@ -23,15 +20,15 @@ use PDO;
 use Useless\Pdo\Config\Exception\InvalidHost;
 
 /**
- * Short description for class
- *
- * Long description for class (if any)...
  *
  * @package    Useless\Pdo\Config
  */
 class Mysql
 	extends AbstractConfig
 {
+	/**
+	 * {@inheritdoc}
+	 */
 	public function addParameter( $name, $value )
 	{
 		if ( static::CHARSET == $name ) {
@@ -69,6 +66,9 @@ class Mysql
 		return $dsn;
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function init()
 	{
 		$this->options = array(
