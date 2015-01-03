@@ -41,8 +41,7 @@ class Mysql
 	}
 
 	/**
-	 * @return string
-	 * @throws InvalidHost
+	 * {@inheritdoc}
 	 */
 	public function getDsn()
 	{

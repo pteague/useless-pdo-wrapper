@@ -22,7 +22,6 @@ namespace Useless\Pdo\Config;
 use PDO;
 use Traversable;
 use Useless\Pdo\ConfigInterface as ConfigInterface;
-use Useless\Pdo\PDOInterface as PDOInterface;
 
 /**
  * Short description for class
@@ -115,6 +114,9 @@ abstract class AbstractConfig
 		return $this;
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function getAttributes()
 	{
 		return $this->attributes;
@@ -136,9 +138,7 @@ abstract class AbstractConfig
 	}
 
 	/**
-	 * returns string
-	 * @throws InvalidFilePermissions
-	 * @throws InvalidHost
+	 * {@inheritdoc}
 	 */
 	abstract public function getDsn();
 
@@ -164,11 +164,17 @@ abstract class AbstractConfig
 		return $ro;
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function getOptions()
 	{
 		return $this->options;
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function getPassword()
 	{
 		return $this->getParameter( static::PASSWORD );
@@ -196,6 +202,9 @@ abstract class AbstractConfig
 		return $this->getParameter( static::USE_READ_ONLY );
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function getUsername()
 	{
 		return $this->getParameter( static::USERNAME );

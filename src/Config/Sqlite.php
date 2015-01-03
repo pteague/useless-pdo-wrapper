@@ -42,9 +42,7 @@ class Sqlite
 	}
 
 	/**
-	 * @return string
-	 * @throws InvalidFilePermissions
-	 * @throws InvalidHost
+	 * {@inheritdoc}
 	 */
 	public function getDsn()
 	{

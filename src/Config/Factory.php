@@ -35,7 +35,12 @@ class Factory
 		self::CONFIG_MYSQL => 'Useless\\Pdo\\Config\\Mysql',
 		self::CONFIG_SQLITE => 'Useless\\Pdo\\Config\\Sqlite',
 	);
-	
+
+	/**
+	 * @param array $config
+	 * @return \Useless\Pdo\ConfigInterface
+	 * @throws \Useless\Pdo\Config\Exception\UnknownDriver
+	 */
 	public function getConfig( array $config )
 	{
 		$rv = null;
