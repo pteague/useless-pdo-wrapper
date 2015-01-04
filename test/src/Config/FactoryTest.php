@@ -114,6 +114,23 @@ class FactoryTest
 					AbstractConfig::DSN => 'sqlite:/tmp/' . DIRECTORY_SEPARATOR . 'otherdb.sql',
 				),
 			),
+			array(
+				array(
+					AbstractConfig::DRIVER => ConfigLoader::CONFIG_SQLITE_2,
+					AbstractConfig::FILEPATH => '/tmp/mydb.sql',
+				),
+				array(
+					AbstractConfig::DRIVER => ConfigLoader::CONFIG_SQLITE_2,
+					AbstractConfig::FILEPATH => '/tmp/mydb.sql',
+					AbstractConfig::DBNAME => null,
+					AbstractConfig::HOST => null,
+					AbstractConfig::USERNAME => null,
+					AbstractConfig::PASSWORD => null,
+					AbstractConfig::PORT => null,
+					AbstractConfig::CHARSET => null,
+					AbstractConfig::DSN => 'sqlite2:/tmp/mydb.sql',
+				),
+			),
 		);
 		return $provider;
 	}
@@ -136,10 +153,11 @@ class FactoryTest
 		$this->assertEquals( $expected[ AbstractConfig::FILEPATH ], $c->getUnixSocket(), 'unix_socket value mismatch');
 		$this->assertEquals( $expected[ AbstractConfig::CHARSET ], $c->getCharset(), 'charset value mismatch');
 		$this->assertEquals( $expected[ AbstractConfig::DSN ], $c->getDsn(), 'DSN value mismatch');
+		$this->assertEquals( $expected[ AbstractConfig::DSN ], (string)$c, 'DSN value mismatch');
 	}
 
 	/**
-	 * @expectedException Useless\Pdo\Config\Exception\UnknownDriver
+	 * @expectedException \Useless\Pdo\Config\Exception\UnknownDriver
 	 */
 	public function testUnknownDriver()
 	{

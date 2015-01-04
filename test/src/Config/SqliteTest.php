@@ -57,7 +57,7 @@ class SqliteTest
 	}
 
 	/**
-	 * @expectedException Useless\Pdo\Config\Exception\InvalidFilePermissions
+	 * @expectedException \Useless\Pdo\Config\Exception\InvalidFilePermissions
 	 */
 	public function testDsnDirectoryException()
 	{
@@ -68,7 +68,7 @@ class SqliteTest
 	}
 
 	/**
-	 * @expectedException Useless\Pdo\Config\Exception\InvalidFilePermissions
+	 * @expectedException \Useless\Pdo\Config\Exception\InvalidFilePermissions
 	 */
 	public function testDsnFileException()
 	{
