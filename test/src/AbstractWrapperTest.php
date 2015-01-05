@@ -6,6 +6,9 @@ use PDO;
 abstract class AbstractWrapperTest
 	extends \PHPUnit_Framework_TestCase
 {
+	/**
+	 * @var PDO
+	 */
 	protected $pdo;
 
 	protected $data = array(
@@ -25,6 +28,9 @@ abstract class AbstractWrapperTest
 		$this->fillTableData();
 	}
 
+	/**
+	 * @return Wrapper
+	 */
 	abstract protected function newPdo();
 
 	protected function createTable()
@@ -160,6 +166,16 @@ abstract class AbstractWrapperTest
 		$expect = count( $this->data ) + 1;
 		$actual = $this->pdo->lastInsertId();
 		$this->assertEquals( $expect, $actual );
+	}
+
+	public function testResetConnection()
+	{
+		$pdo = $this->newPdo();
+		$this->assertFalse( $pdo->isConnected() );
+		$this->assertInstanceOf( 'PDO', $pdo->getPdo() );
+		$this->assertTrue( $pdo->isConnected() );
+		$pdo->resetConnection();
+		$this->assertFalse( $pdo->isConnected() );
 	}
 
 	public function testTransactions()

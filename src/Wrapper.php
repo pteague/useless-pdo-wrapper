@@ -26,6 +26,7 @@ use Useless\Pdo\ConfigInterface;
 class Wrapper
 	extends PDO
 	implements WrapperInterface
+		,ResetInterface
 {
 	/**
 	 * @var PDO
@@ -280,6 +281,11 @@ class Wrapper
 	public function quote( $string, $parameter_type = PDO::PARAM_STR )
 	{
 		return $this->getPdo()->quote( $string, $parameter_type );
+	}
+
+	public function resetConnection()
+	{
+		$this->pdo = null;
 	}
 
 	/**
